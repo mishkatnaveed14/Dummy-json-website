@@ -2478,13 +2478,21 @@ body {
     }
 
     .docs-layout .docs-sidebar {
-        position: relative;
-        top: auto;
-        grid-column: 1;
-        grid-row: 1;
+        position: fixed;
+        top: 140px;
+        right: 0;
+        left: 0;
+        z-index: 49;
+        display: none;
         width: 100%;
-        max-height: calc(100vh - 180px);
-        border-radius: 0;
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 16px 30px rgba(32, 38, 64, 0.16);
+    }
+
+    .docs-layout .docs-sidebar.docs-sidebar--open {
+        display: block;
     }
 
     .docs-layout .docs-content {
@@ -2494,7 +2502,7 @@ body {
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .docs-body .site-header {
         padding: 10px 0 0;
     }
@@ -2526,6 +2534,10 @@ body {
         display: block;
         grid-area: menu;
         margin: 0;
+    }
+
+    .docs-body .mobile-menu__panel {
+        display: none;
     }
 
     .docs-body .desktop-nav {

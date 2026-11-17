@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const overviewTitle = document.querySelector(".docs-overview h1");
   const overviewDescription = document.querySelector(".docs-overview p");
   const dynamicImageCallout = document.getElementById("dynamic-image-callout");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const docsSidebar = document.getElementById("docs-sidebar");
   const categoryCopy = {
     intro: ["Intro — Docs", "Quick-start examples for testing requests, query options, and API responses."],
     tools: ["Developer Tools — Docs", "DataDino developer tools help you test and prototype: generate TOTP codes, create custom JSON endpoints, and inspect webhook requests."],
@@ -34,6 +36,41 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   activateCategory(categoryGroups.find((group) => group.open) || categoryGroups[0]);
+
+  if (mobileMenu && docsSidebar) {
+    let closeSidebarTimer;
+    const showSidebar = () => {
+      window.clearTimeout(closeSidebarTimer);
+      docsSidebar.classList.add("docs-sidebar--open");
+    };
+    const scheduleSidebarClose = (ignoreFocus = false) => {
+      window.clearTimeout(closeSidebarTimer);
+      closeSidebarTimer = window.setTimeout(() => {
+        const sidebarHasFocus = docsSidebar.contains(document.activeElement);
+        const menuHasFocus = mobileMenu.contains(document.activeElement);
+        const keepOpenForFocus = !ignoreFocus && (sidebarHasFocus || menuHasFocus);
+        if (!mobileMenu.open && !mobileMenu.matches(":hover") && !docsSidebar.matches(":hover") && !keepOpenForFocus) {
+          docsSidebar.classList.remove("docs-sidebar--open");
+        }
+      }, 250);
+    };
+
+    mobileMenu.addEventListener("mouseenter", showSidebar);
+    mobileMenu.addEventListener("mouseleave", scheduleSidebarClose);
+    mobileMenu.addEventListener("focusin", showSidebar);
+    mobileMenu.addEventListener("focusout", scheduleSidebarClose);
+    mobileMenu.addEventListener("toggle", () => {
+      if (mobileMenu.open) {
+        showSidebar();
+      } else {
+        scheduleSidebarClose(true);
+      }
+    });
+    docsSidebar.addEventListener("mouseenter", showSidebar);
+    docsSidebar.addEventListener("mouseleave", scheduleSidebarClose);
+    docsSidebar.addEventListener("focusin", showSidebar);
+    docsSidebar.addEventListener("focusout", scheduleSidebarClose);
+  }
 
   const totpButtons = document.querySelectorAll("[data-totp-method]");
 

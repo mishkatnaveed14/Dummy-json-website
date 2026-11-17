@@ -235,10 +235,58 @@
                     <a class="try-demo__button" href="/docs">View Docs</a>
                 </div>
             </section>
+
+            <section class="custom-response" id="custom-response" aria-labelledby="custom-response-title">
+                <div class="custom-response__content">
+                    <h2 class="custom-response__title" id="custom-response-title">
+                        <svg viewBox="0 0 40 40" aria-hidden="true">
+                            <path d="M20 3.5 25.2 14l11.3 1.6-8.2 8 1.9 11.3L20 29.5 9.8 34.9l1.9-11.3-8.2-8L14.8 14 20 3.5Z" fill="#b9b6ff" stroke="#171717" stroke-width="2.5" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Custom Response</span>
+                    </h2>
+                    <p class="custom-response__intro">
+                        Need a REST API for custom JSON data? Enter a response body below
+                        and click <strong>Generate Now</strong> to get your custom API URL.
+                    </p>
+
+                    <div class="custom-response__editor">
+                        <div class="custom-response__toolbar">
+                            <label for="custom-json-editor">JSON response body</label>
+                            <button class="custom-response__prettify" id="custom-prettify" type="button">Prettify</button>
+                        </div>
+                        <textarea id="custom-json-editor" spellcheck="false" autocapitalize="off" aria-describedby="custom-response-status">{
+  "foo": "bar"
+}</textarea>
+                    </div>
+
+                    <p class="custom-response__status" id="custom-response-status" role="status" aria-live="polite">
+                        Enter a JSON object or array, then generate your endpoint.
+                    </p>
+
+                    <div class="custom-response__url">
+                        <label class="visually-hidden" for="custom-api-url">Generated API URL</label>
+                        <input id="custom-api-url" type="url" readonly disabled placeholder="Your generated API URL will appear here">
+                        <button class="custom-response__copy" id="custom-copy" type="button" disabled>Copy URL</button>
+                    </div>
+                    <p class="custom-response__note">Generated URLs are available while this server is running.</p>
+
+                    <div class="custom-response__actions">
+                        <button class="custom-response__button custom-response__button--primary" id="custom-generate" type="button">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="m14.5 3 6.5 6.5M4 20l4.6-1 11-11a2.1 2.1 0 0 0-3-3l-11 11L4 20Zm8.5-16L14 6m-7 9 2 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Generate Now</span>
+                        </button>
+                        <a class="custom-response__button custom-response__button--secondary" href="/docs">More Info</a>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <%- include('partials/footer') %>
         <script src="/js/try-it.js" defer></script>
+        <script src="/js/custom-response.js" defer></script>
+        <script src="/js/custom-response.js" defer></script>
 </body>
 
 </html>

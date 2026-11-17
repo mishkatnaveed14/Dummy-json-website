@@ -2330,3 +2330,110 @@ body {
         transition-duration: 0.01ms !important;
     }
 }
+
+.docs-callout {
+    display: grid;
+    gap: 10px;
+    margin: 0 0 16px;
+    padding: 16px 18px;
+    border-left: 4px solid #e8ba47;
+    border-radius: 0 10px 10px 0;
+    background: #fff8df;
+    color: #4c4328;
+    line-height: 1.5;
+}
+
+.docs-callout label {
+    color: #252525;
+    font-size: 0.92rem;
+    font-weight: 650;
+}
+
+.docs-callout input {
+    width: min(100%, 520px);
+    min-height: 44px;
+    padding: 10px 13px;
+    border: 1px solid #d9c985;
+    border-radius: 8px;
+    background: #fff;
+    color: #171717;
+    font: inherit;
+}
+
+.docs-callout input:focus-visible {
+    border-color: #625cf0;
+    outline: 3px solid rgba(98, 92, 240, 0.2);
+}
+
+.docs-tool-action {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 10px 17px;
+    border: 1px solid #171717;
+    border-radius: 9px;
+    background: #171717;
+    color: #fff;
+    font: inherit;
+    font-weight: 650;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.docs-tool-action:hover,
+.docs-tool-action:focus-visible {
+    background: #625cf0;
+    box-shadow: 3px 3px 0 #171717;
+    transform: translate(-1px, -2px);
+}
+
+.docs-tool-action:focus-visible {
+    outline: 2px solid #625cf0;
+    outline-offset: 3px;
+}
+
+.docs-tool-action:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+.docs-tool-output {
+    max-height: 340px;
+    margin-top: 14px !important;
+    overflow: auto;
+    border-color: #d7d9e2 !important;
+    background: #f7f7fa !important;
+    color: #252733 !important;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap !important;
+}
+
+.docs-tool-output[hidden] {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .docs-callout {
+        padding: 14px;
+    }
+
+    .docs-callout input {
+        width: 100%;
+    }
+
+    .docs-tool-action {
+        width: 100%;
+        margin-top: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .docs-tool-action {
+        transition: none;
+    }
+}

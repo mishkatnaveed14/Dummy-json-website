@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
-    <meta name="description" content="Get started with DataDino placeholder JSON data.">
-    <title>Docs — DataDino</title>
+    <meta name="description" content="Explore DataDino developer tools for TOTP, custom JSON responses, and webhook testing.">
+    <title>Developer Tools — Docs | DataDino</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -15,7 +15,7 @@
 
         <main class="docs-layout">
             <aside class="docs-sidebar" aria-label="Documentation navigation">
-                <details class="docs-group" open>
+                <details class="docs-group">
                     <summary>Intro</summary>
                     <nav class="docs-group__links" aria-label="Intro">
                         <a href="#test">Test</a>
@@ -24,14 +24,17 @@
                         <a href="#resources-auth">Resources as Auth User</a>
                         <a href="#ip-address">IP Address</a>
                         <a href="#openapi-spec">OpenAPI Spec</a>
+                        <a href="#tools-search">Search</a>
+                        <a href="#tools-pagination">Pagination</a>
                     </nav>
                 </details>
 
-                <details class="docs-group">
+                <details class="docs-group" open>
                     <summary>Tools</summary>
                     <nav class="docs-group__links" aria-label="Tools">
-                        <a href="#tools-search">Search</a>
-                        <a href="#tools-pagination">Pagination</a>
+                        <a href="#tools-totp">2FA TOTP</a>
+                        <a href="#tools-custom-response">Custom Response</a>
+                        <a href="#tools-webhook">Webhook</a>
                     </nav>
                 </details>
 
@@ -61,12 +64,78 @@
 
             <div class="docs-content">
                 <header class="docs-overview">
-                    <h1>DataDino — Docs</h1>
+                    <h1>Developer Tools — Docs</h1>
                     <p>
-                        Use these examples to fetch JSON data for frontend projects,
-                        try common query options, and test API responses.
+                        DataDino developer tools help you test and prototype: generate TOTP codes,
+                        create custom JSON endpoints, and inspect webhook requests.
                     </p>
                 </header>
+
+                <section class="docs-section docs-tool-section" id="tools-totp">
+                    <h2>2FA TOTP — Generate (GET)</h2>
+                    <p>Generate a time-based one-time password using a Base32 test secret.</p>
+                    <div class="docs-callout">
+                        <span>GET places the secret in the URL. Use a test key only; POST keeps it out of the query string.</span>
+                        <label for="totp-get-secret">Base32 test secret</label>
+                        <input id="totp-get-secret" type="text" autocomplete="off" spellcheck="false" placeholder="YOUR_BASE32_SECRET">
+                    </div>
+                    <pre><code id="totp-get-code">fetch("https://dummyjson.com/2fa?key=YOUR_BASE32_SECRET")
+  .then(response => response.json())
+  .then(console.log);</code></pre>
+                    <button class="docs-tool-action" type="button" data-totp-method="GET" data-secret="totp-get-secret" data-code="totp-get-code" data-output="totp-get-output">
+                        Show Output
+                    </button>
+                    <pre class="docs-tool-output" id="totp-get-output" role="status" aria-live="polite" hidden></pre>
+                </section>
+
+                <section class="docs-section docs-tool-section" id="tools-totp-post">
+                    <h2>2FA TOTP — Generate (POST)</h2>
+                    <p>Prefer POST for secrets so the key is not included in the request URL.</p>
+                    <div class="docs-callout">
+                        <span>Send your Base32 test secret in the JSON request body.</span>
+                        <label for="totp-post-secret">Base32 test secret</label>
+                        <input id="totp-post-secret" type="text" autocomplete="off" spellcheck="false" placeholder="YOUR_BASE32_SECRET">
+                    </div>
+                    <pre><code id="totp-post-code">fetch("https://dummyjson.com/2fa", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ key: "YOUR_BASE32_SECRET" })
+})
+  .then(response => response.json())
+  .then(console.log);</code></pre>
+                    <button class="docs-tool-action" type="button" data-totp-method="POST" data-secret="totp-post-secret" data-code="totp-post-code" data-output="totp-post-output">
+                        Show Output
+                    </button>
+                    <pre class="docs-tool-output" id="totp-post-output" role="status" aria-live="polite" hidden></pre>
+                </section>
+
+                <section class="docs-section docs-tool-section" id="tools-custom-response">
+                    <h2>Custom Response</h2>
+                    <p>Create a temporary API endpoint that returns your own JSON object or array.</p>
+                    <pre><code>fetch("/api/custom-responses", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ message: "Hello, DataDino!" })
+})
+  .then(response => response.json())
+  .then(result => console.log(result.path));</code></pre>
+                    <a class="docs-tool-action docs-tool-link" href="/#custom-response">Open Custom Response Builder</a>
+                </section>
+
+                <section class="docs-section docs-tool-section" id="tools-webhook">
+                    <h2>Webhook</h2>
+                    <p>Send a sample webhook event to the local test receiver and inspect its response.</p>
+                    <div class="docs-callout">
+                        <span>The latest event is shared with visitors to this server, kept in memory only, and cleared when the server restarts. Do not send sensitive data.</span>
+                    </div>
+                    <pre><code>fetch("/api/webhooks/test", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ event: "order.created", data: { orderId: 123 } })
+});</code></pre>
+                    <button class="docs-tool-action" id="webhook-send-test" type="button">Send Sample Event</button>
+                    <pre class="docs-tool-output" id="webhook-output" role="status" aria-live="polite" hidden></pre>
+                </section>
 
                 <section class="docs-section" id="test">
                     <h2>Test</h2>
@@ -158,9 +227,11 @@
                     <pre><code>fetch("https://dummyjson.com/products/1");</code></pre>
                 </section>
             </div>
+
         </main>
 
         <%- include('partials/footer') %>
+        <script src="/js/docs-tools.js" defer></script>
 </body>
 
 </html>

@@ -5,6 +5,7 @@ const { randomUUID } = require('node:crypto');
 const port = process.env.PORT || 3000;
 const customResponses = new Map();
 const maxCustomResponses = 100;
+let latestWebhookEvent = null;
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -17,6 +18,10 @@ app.get("/", (req, res) => {
 
 app.get("/docs", (req, res) => {
   res.render("docs");
+});
+
+app.get("/tools", (req, res) => {
+  res.redirect("/docs#tools-totp");
 });
 
 app.post("/api/custom-responses", (req, res) => {
@@ -39,6 +44,27 @@ app.get("/api/custom-responses/:id", (req, res) => {
   }
 
   return res.json(customResponses.get(req.params.id));
+});
+
+app.post("/api/webhooks/test", (req, res) => {
+  if (req.body === null || typeof req.body !== "object") {
+    return res.status(400).json({ error: "The webhook body must be a JSON object or array." });
+  }
+
+  latestWebhookEvent = {
+    receivedAt: new Date().toISOString(),
+    event: req.body
+  };
+
+  return res.status(202).json({ status: "received", ...latestWebhookEvent });
+});
+
+app.get("/api/webhooks/test/latest", (req, res) => {
+  if (!latestWebhookEvent) {
+    return res.status(404).json({ error: "No webhook events have been received yet." });
+  }
+
+  return res.json(latestWebhookEvent);
 });
 
 app.use((error, req, res, next) => {

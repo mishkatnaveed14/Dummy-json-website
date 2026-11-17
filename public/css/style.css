@@ -1423,6 +1423,7 @@ body {
 .try-demo {
     position: relative;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     min-height: 720px;
     place-items: center;
     overflow: hidden;
@@ -1437,6 +1438,7 @@ body {
 
 .try-demo__content {
     width: min(100%, 900px);
+    min-width: 0;
     animation: try-demo-enter 650ms ease both;
 }
 
@@ -1500,6 +1502,8 @@ body {
 .try-demo__response {
     overflow: hidden;
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
     border: 2px solid #171717;
     border-radius: 12px;
     background: #243036;
@@ -1525,14 +1529,20 @@ body {
 }
 
 .try-demo__response pre {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
     max-height: 430px;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: auto;
     margin: 0;
     padding: 18px 22px;
     color: #a8d7b6;
     font: 0.9rem/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     tab-size: 2;
     white-space: pre;
+    overscroll-behavior: contain;
 }
 
 .try-demo__button {

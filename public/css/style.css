@@ -1939,7 +1939,10 @@ body {
 }
 /* ====================----------styling of demo page -----------===================== */
 .docs-body {
-    background: #fff;
+    background:
+        radial-gradient(ellipse at 92% 0, rgba(196, 181, 253, 0.22), transparent 34rem),
+        radial-gradient(ellipse at 0 42%, rgba(125, 211, 252, 0.15), transparent 30rem),
+        linear-gradient(180deg, #fafaff 0%, #f8faff 52%, #fff 100%);
     color: #171717;
 }
 
@@ -1973,9 +1976,11 @@ body {
     overflow-y: auto;
     padding: 10px;
     border-radius: 14px;
-    background: #f3f3f3;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(240, 243, 255, 0.97));
     scrollbar-width: thin;
-    scrollbar-color: #aaa transparent;
+    scrollbar-color: #a7a9b8 transparent;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 }
 
 .docs-group {
@@ -2159,8 +2164,23 @@ body {
 }
 
 .docs-sidebar {
-    border: 1px solid rgba(29, 33, 48, 0.06);
-    box-shadow: 0 12px 32px rgba(32, 38, 64, 0.07);
+    border: 1px solid rgba(70, 72, 120, 0.12);
+    box-shadow: 0 18px 44px rgba(35, 40, 75, 0.12);
+}
+
+.docs-sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.docs-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.docs-sidebar::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background: #a7a9b8;
+    background-clip: padding-box;
 }
 
 .docs-group {
@@ -2231,7 +2251,7 @@ body {
 }
 
 .docs-group[open] summary {
-    background: #eeedff;
+    background: linear-gradient(100deg, #eeedff, #f7f6ff);
     color: #5b56d6;
 }
 
@@ -2329,6 +2349,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .docs-sidebar {
+        animation: none !important;
+    }
+
     .docs-group *,
     .docs-group *::before,
     .docs-group *::after {
@@ -2485,12 +2509,25 @@ body {
 
     .docs-layout .docs-sidebar.docs-sidebar--open {
         display: block;
+        animation: docs-sidebar-enter 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
     }
 
     .docs-layout .docs-content {
         grid-column: 1;
         grid-row: 2;
         padding: 24px 20px;
+    }
+}
+
+@keyframes docs-sidebar-enter {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

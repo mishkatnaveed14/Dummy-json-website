@@ -39,7 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (mobileMenu && docsSidebar) {
     const syncSidebarVisibility = () => {
-      docsSidebar.classList.toggle("docs-sidebar--open", mobileMenu.open);
+      const isOpen = mobileMenu.open;
+      docsSidebar.classList.toggle("docs-sidebar--open", isOpen);
+      document.documentElement.classList.toggle("docs-menu-open", isOpen);
+      document.body.classList.toggle("docs-menu-open", isOpen);
     };
 
     syncSidebarVisibility();

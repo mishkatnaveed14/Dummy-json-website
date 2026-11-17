@@ -9,7 +9,9 @@
     --nav-violet: #c4b5fd;
     --nav-amber: #fcd34d;
 }
-
+*{
+    box-sizing: border-box;
+}
 .site-header,
 .site-header * {
     box-sizing: border-box;
@@ -2471,6 +2473,12 @@ body {
 }
 
 @media (max-width: 1024px) {
+    html.docs-menu-open,
+    body.docs-menu-open {
+        overflow: hidden;
+        overscroll-behavior: none;
+    }
+
     .docs-layout {
         grid-template-columns: minmax(0, 1fr);
         gap: 24px;
@@ -2486,7 +2494,10 @@ body {
         display: none;
         width: 100%;
         max-height: calc(100vh - 78px);
+        max-height: calc(100dvh - 78px);
         overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
         border-radius: 0 0 12px 12px;
         box-shadow: 0 16px 30px rgba(32, 38, 64, 0.16);
     }

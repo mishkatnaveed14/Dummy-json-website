@@ -2418,6 +2418,14 @@ body {
 }
 
 @media (max-width: 600px) {
+    .docs-sidebar {
+        display: none;
+    }
+
+    .docs-content {
+        grid-row: 1;
+    }
+
     .docs-callout {
         padding: 14px;
     }

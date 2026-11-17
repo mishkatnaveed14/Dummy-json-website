@@ -62,9 +62,18 @@
 
                 <details class="docs-group" data-docs-category="products">
                     <summary>Products</summary>
-                    <nav class="docs-group__links" aria-label="Products">
-                        <a href="#products">All Products</a>
-                        <a href="#single-product">Single Product</a>
+                    <nav class="docs-group__links docs-group__links--products" aria-label="Products">
+                        <a href="#single-product">Get a single product</a>
+                        <a href="#search-products">Search products</a>
+                        <a href="#limit-skip-products">Limit &amp; Skip products</a>
+                        <a href="#sort-products">Sort products</a>
+                        <a href="#filter-products-modified">Filter by modified date</a>
+                        <a href="#product-categories">Get all products categories</a>
+                        <a href="#product-category-list">Get products category list</a>
+                        <a href="#products-by-category">Get products by category</a>
+                        <a href="#add-product">Add a product</a>
+                        <a href="#update-product">Update a product</a>
+                        <a href="#delete-product">Delete a product</a>
                     </nav>
                 </details>
             </aside>
@@ -304,15 +313,80 @@ fetch("https://dummyjson.com/icon/abc123/150")
                 </section>
 
                 <section class="docs-section" id="products" data-docs-category="products" hidden>
-                    <h2>All Products</h2>
+                    <h2>Get all products</h2>
                     <p>Fetch the products collection.</p>
                     <pre><code>fetch("https://dummyjson.com/products");</code></pre>
                 </section>
 
                 <section class="docs-section" id="single-product" data-docs-category="products" hidden>
-                    <h2>Single Product</h2>
+                    <h2>Get a single product</h2>
                     <p>Replace 1 with the product ID you want to retrieve.</p>
                     <pre><code>fetch("https://dummyjson.com/products/1");</code></pre>
+                </section>
+
+                <section class="docs-section" id="search-products" data-docs-category="products" hidden>
+                    <h2>Search products</h2>
+                    <p>Search products by title, description, or other matching fields.</p>
+                    <pre><code>fetch("https://dummyjson.com/products/search?q=phone");</code></pre>
+                </section>
+
+                <section class="docs-section" id="limit-skip-products" data-docs-category="products" hidden>
+                    <h2>Limit &amp; Skip products</h2>
+                    <p>Use limit and skip to paginate through the products collection.</p>
+                    <pre><code>fetch("https://dummyjson.com/products?limit=10&amp;skip=10");</code></pre>
+                </section>
+
+                <section class="docs-section" id="sort-products" data-docs-category="products" hidden>
+                    <h2>Sort products</h2>
+                    <p>Sort the collection by a field in ascending or descending order.</p>
+                    <pre><code>fetch("https://dummyjson.com/products?sortBy=title&amp;order=asc");</code></pre>
+                </section>
+
+                <section class="docs-section" id="filter-products-modified" data-docs-category="products" hidden>
+                    <h2>Filter by modified date</h2>
+                    <p>Use ISO 8601 dates to filter products by their last update time.</p>
+                    <pre><code>fetch("https://dummyjson.com/products?modifiedAfter=2026-06-01T00:00:00&amp;select=title,meta");</code></pre>
+                </section>
+
+                <section class="docs-section" id="product-categories" data-docs-category="products" hidden>
+                    <h2>Get all products categories</h2>
+                    <pre><code>fetch("https://dummyjson.com/products/categories");</code></pre>
+                </section>
+
+                <section class="docs-section" id="product-category-list" data-docs-category="products" hidden>
+                    <h2>Get products category list</h2>
+                    <pre><code>fetch("https://dummyjson.com/products/category-list");</code></pre>
+                </section>
+
+                <section class="docs-section" id="products-by-category" data-docs-category="products" hidden>
+                    <h2>Get products by category</h2>
+                    <p>Replace smartphones with the category you want to retrieve.</p>
+                    <pre><code>fetch("https://dummyjson.com/products/category/smartphones");</code></pre>
+                </section>
+
+                <section class="docs-section" id="add-product" data-docs-category="products" hidden>
+                    <h2>Add a product</h2>
+                    <pre><code>fetch("https://dummyjson.com/products/add", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ title: "New product" })
+});</code></pre>
+                </section>
+
+                <section class="docs-section" id="update-product" data-docs-category="products" hidden>
+                    <h2>Update a product</h2>
+                    <pre><code>fetch("https://dummyjson.com/products/1", {
+  method: "PATCH",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ title: "Updated product" })
+});</code></pre>
+                </section>
+
+                <section class="docs-section" id="delete-product" data-docs-category="products" hidden>
+                    <h2>Delete a product</h2>
+                    <pre><code>fetch("https://dummyjson.com/products/1", {
+  method: "DELETE"
+});</code></pre>
                 </section>
             </div>
 

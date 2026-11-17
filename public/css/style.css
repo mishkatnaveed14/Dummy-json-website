@@ -2312,6 +2312,27 @@ body {
     outline-offset: 1px;
 }
 
+.docs-group__links--products {
+    padding: 0 5px 8px;
+}
+
+.docs-group__links--products a {
+    margin: 0;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(29, 33, 48, 0.08);
+    border-radius: 0;
+}
+
+.docs-group__links--products a::before {
+    display: none;
+}
+
+.docs-group__links--products a:hover,
+.docs-group__links--products a:focus-visible {
+    border-radius: 7px;
+    transform: none;
+}
+
 @keyframes docs-links-open {
     from {
         opacity: 0;

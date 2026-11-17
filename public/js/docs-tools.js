@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tools: ["Developer Tools — Docs", "DataDino developer tools help you test and prototype: generate TOTP codes, create custom JSON endpoints, and inspect webhook requests."],
     "dynamic-image": ["Image — Docs", "The image endpoint provides customizable placeholder images by size, with options for background color, text color, and display text. Use them in websites and wireframes."],
     auth: ["Authentication — Docs", "Explore login and authenticated user endpoints."],
-    products: ["Products — Docs", "Browse the products collection and retrieve individual products."]
+    products: ["Products — Docs", "Browse products, search and filter the collection, explore categories, and create, update, or delete products."]
   };
 
   const activateCategory = (activeGroup) => {

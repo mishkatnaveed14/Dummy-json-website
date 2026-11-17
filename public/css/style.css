@@ -2110,21 +2110,24 @@ body {
     .docs-layout {
         grid-template-columns: minmax(0, 1fr);
         gap: 24px;
-        padding: 24px 20px 64px;
+        padding: 0 0 64px;
     }
 
     .docs-sidebar {
-        position: sticky;
-        top: 82px;
+        position: relative;
+        top: auto;
         z-index: 20;
         grid-column: 1;
         grid-row: 1;
-        max-height: 38vh;
+        width: 100%;
+        max-height: calc(100vh - 180px);
+        border-radius: 0;
     }
 
     .docs-content {
         grid-column: 1;
         grid-row: 2;
+        padding: 24px 20px;
     }
 }
 
@@ -2135,12 +2138,12 @@ body {
 
     .docs-layout {
         gap: 18px;
-        padding: 18px 16px 48px;
+        padding: 0 0 48px;
     }
 
     .docs-sidebar {
-        top: 76px;
-        max-height: 34vh;
+        top: auto;
+        max-height: calc(100vh - 180px);
         padding: 7px;
     }
 
@@ -2418,12 +2421,8 @@ body {
 }
 
 @media (max-width: 600px) {
-    .docs-sidebar {
-        display: none;
-    }
-
     .docs-content {
-        grid-row: 1;
+        grid-row: 2;
     }
 
     .docs-callout {
@@ -2453,15 +2452,84 @@ body {
 @media (max-width: 1024px) {
     .docs-layout {
         grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+        padding: 0 0 64px;
     }
 
     .docs-layout .docs-sidebar {
-        display: none;
+        position: relative;
+        top: auto;
+        grid-column: 1;
+        grid-row: 1;
+        width: 100%;
+        max-height: calc(100vh - 180px);
+        border-radius: 0;
     }
 
     .docs-layout .docs-content {
         grid-column: 1;
-        grid-row: 1;
+        grid-row: 2;
+        padding: 24px 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .docs-body .site-header {
+        padding: 10px 0 0;
+    }
+
+    .docs-body .navbar {
+        display: grid;
+        grid-template-areas:
+            "brand menu"
+            "nav github";
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0 8px;
+        width: 100%;
+        padding: 8px 14px;
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .docs-body .brand {
+        grid-area: brand;
+    }
+
+    .docs-body .brand__name {
+        font-size: clamp(21px, 4vw, 28px);
+    }
+
+    .docs-body .mobile-menu {
+        display: block;
+        grid-area: menu;
+        margin: 0;
+    }
+
+    .docs-body .desktop-nav {
+        display: flex;
+        grid-area: nav;
+        justify-content: space-around;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+    }
+
+    .docs-body .nav-link {
+        padding: 12px 8px;
+        color: #333;
+        font-size: 15px;
+    }
+
+    .docs-body .navbar > .github-button {
+        display: inline-flex;
+        grid-area: github;
+        min-height: 44px;
+        padding: 0 12px;
+        border-radius: 10px;
     }
 }
 

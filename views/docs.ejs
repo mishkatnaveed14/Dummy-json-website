@@ -15,7 +15,7 @@
 
         <main class="docs-layout">
             <aside class="docs-sidebar" aria-label="Documentation navigation">
-                <details class="docs-group">
+                <details class="docs-group" data-docs-category="intro">
                     <summary>Intro</summary>
                     <nav class="docs-group__links" aria-label="Intro">
                         <a href="#test">Test</a>
@@ -29,7 +29,7 @@
                     </nav>
                 </details>
 
-                <details class="docs-group" open>
+                <details class="docs-group" data-docs-category="tools" open>
                     <summary>Tools</summary>
                     <nav class="docs-group__links" aria-label="Tools">
                         <a href="#tools-totp">2FA TOTP</a>
@@ -38,14 +38,21 @@
                     </nav>
                 </details>
 
-                <details class="docs-group">
+                <details class="docs-group" data-docs-category="dynamic-image">
                     <summary>Dynamic Image</summary>
                     <nav class="docs-group__links" aria-label="Dynamic Image">
-                        <a href="#dynamic-image">Image URL</a>
+                        <a href="#image-square">Generate square image</a>
+                        <a href="#image-custom-size">Custom width / height</a>
+                        <a href="#image-custom-text">Custom text</a>
+                        <a href="#image-custom-colors">Custom background and text color</a>
+                        <a href="#image-format">Different file formats</a>
+                        <a href="#image-font-family">Custom font family</a>
+                        <a href="#image-font-size">Custom font size</a>
+                        <a href="#image-identicon">Create identicon</a>
                     </nav>
                 </details>
 
-                <details class="docs-group">
+                <details class="docs-group" data-docs-category="auth">
                     <summary>Auth</summary>
                     <nav class="docs-group__links" aria-label="Auth">
                         <a href="#auth-login">Login</a>
@@ -53,7 +60,7 @@
                     </nav>
                 </details>
 
-                <details class="docs-group">
+                <details class="docs-group" data-docs-category="products">
                     <summary>Products</summary>
                     <nav class="docs-group__links" aria-label="Products">
                         <a href="#products">All Products</a>
@@ -69,9 +76,15 @@
                         DataDino developer tools help you test and prototype: generate TOTP codes,
                         create custom JSON endpoints, and inspect webhook requests.
                     </p>
+                    <div class="docs-callout docs-image-callout" id="dynamic-image-callout" hidden>
+                        <span>
+                            The base URL is
+                            <a href="https://dummyjson.com/image" target="_blank" rel="noopener noreferrer">dummyjson.com/image</a>
+                        </span>
+                    </div>
                 </header>
 
-                <section class="docs-section docs-tool-section" id="tools-totp">
+                <section class="docs-section docs-tool-section" id="tools-totp" data-docs-category="tools">
                     <h2>2FA TOTP — Generate (GET)</h2>
                     <p>Generate a time-based one-time password using a Base32 test secret.</p>
                     <div class="docs-callout">
@@ -88,7 +101,7 @@
                     <pre class="docs-tool-output" id="totp-get-output" role="status" aria-live="polite" hidden></pre>
                 </section>
 
-                <section class="docs-section docs-tool-section" id="tools-totp-post">
+                <section class="docs-section docs-tool-section" id="tools-totp-post" data-docs-category="tools">
                     <h2>2FA TOTP — Generate (POST)</h2>
                     <p>Prefer POST for secrets so the key is not included in the request URL.</p>
                     <div class="docs-callout">
@@ -109,7 +122,7 @@
                     <pre class="docs-tool-output" id="totp-post-output" role="status" aria-live="polite" hidden></pre>
                 </section>
 
-                <section class="docs-section docs-tool-section" id="tools-custom-response">
+                <section class="docs-section docs-tool-section" id="tools-custom-response" data-docs-category="tools">
                     <h2>Custom Response</h2>
                     <p>Create a temporary API endpoint that returns your own JSON object or array.</p>
                     <pre><code>fetch("/api/custom-responses", {
@@ -122,7 +135,7 @@
                     <a class="docs-tool-action docs-tool-link" href="/#custom-response">Open Custom Response Builder</a>
                 </section>
 
-                <section class="docs-section docs-tool-section" id="tools-webhook">
+                <section class="docs-section docs-tool-section" id="tools-webhook" data-docs-category="tools">
                     <h2>Webhook</h2>
                     <p>Send a sample webhook event to the local test receiver and inspect its response.</p>
                     <div class="docs-callout">
@@ -137,7 +150,7 @@
                     <pre class="docs-tool-output" id="webhook-output" role="status" aria-live="polite" hidden></pre>
                 </section>
 
-                <section class="docs-section" id="test">
+                <section class="docs-section" id="test" data-docs-category="intro" hidden>
                     <h2>Test</h2>
                     <p>Check that the API is reachable with a simple request.</p>
                     <pre><code>fetch("https://dummyjson.com/test")
@@ -145,19 +158,19 @@
   .then(console.log);</code></pre>
                 </section>
 
-                <section class="docs-section" id="limiting-resources">
+                <section class="docs-section" id="limiting-resources" data-docs-category="intro" hidden>
                     <h2>Limiting Resources</h2>
                     <p>Use limit, skip, and select to control the response size and fields.</p>
                     <pre><code>fetch("https://dummyjson.com/products?limit=10&amp;skip=5&amp;select=title,price");</code></pre>
                 </section>
 
-                <section class="docs-section" id="delay-responses">
+                <section class="docs-section" id="delay-responses" data-docs-category="intro" hidden>
                     <h2>Delay Responses</h2>
                     <p>Add a delay query parameter to simulate a slower API response.</p>
                     <pre><code>fetch("https://dummyjson.com/products?delay=1000");</code></pre>
                 </section>
 
-                <section class="docs-section" id="resources-auth">
+                <section class="docs-section" id="resources-auth" data-docs-category="intro" hidden>
                     <h2>Resources as Auth User</h2>
                     <p>Send a bearer token when requesting a protected resource.</p>
                     <pre><code>fetch("https://dummyjson.com/auth/me", {
@@ -165,7 +178,7 @@
 });</code></pre>
                 </section>
 
-                <section class="docs-section" id="ip-address">
+                <section class="docs-section" id="ip-address" data-docs-category="intro" hidden>
                     <h2>IP Address</h2>
                     <p>Request the IP information detected by the API.</p>
                     <pre><code>fetch("https://dummyjson.com/ip")
@@ -173,31 +186,106 @@
   .then(console.log);</code></pre>
                 </section>
 
-                <section class="docs-section" id="openapi-spec">
+                <section class="docs-section" id="openapi-spec" data-docs-category="intro" hidden>
                     <h2>OpenAPI Spec</h2>
                     <p>Fetch the API schema for use with API tools and code generators.</p>
                     <pre><code>fetch("https://dummyjson.com/openapi.json");</code></pre>
                 </section>
 
-                <section class="docs-section" id="tools-search">
+                <section class="docs-section" id="tools-search" data-docs-category="intro" hidden>
                     <h2>Search</h2>
                     <p>Search products with a query string.</p>
                     <pre><code>fetch("https://dummyjson.com/products/search?q=phone");</code></pre>
                 </section>
 
-                <section class="docs-section" id="tools-pagination">
+                <section class="docs-section" id="tools-pagination" data-docs-category="intro" hidden>
                     <h2>Pagination</h2>
                     <p>Use skip and limit to request a different page of results.</p>
                     <pre><code>fetch("https://dummyjson.com/products?limit=10&amp;skip=10");</code></pre>
                 </section>
 
-                <section class="docs-section" id="dynamic-image">
-                    <h2>Dynamic Image</h2>
-                    <p>Build a placeholder image URL with the size you need.</p>
-                    <pre><code>https://dummyjson.com/image/300x200</code></pre>
+                <section class="docs-section docs-image-section" id="image-square" data-docs-category="dynamic-image" hidden>
+                    <h2>Generate square image <a class="docs-section-permalink" href="#image-square" aria-label="Link to Generate square image">↗</a></h2>
+                    <pre><code>// https://dummyjson.com/image/SIZE
+fetch("https://dummyjson.com/image/150")
+  .then(response => response.blob())
+  .then(blob => console.log("Fetched image blob:", blob));</code></pre>
+                    <h3 class="docs-output-heading">Output:</h3>
+                    <img class="docs-image-output" src="https://dummyjson.com/image/150" width="150" height="150" alt="150 by 150 placeholder image" loading="eager" decoding="async">
                 </section>
 
-                <section class="docs-section" id="auth-login">
+                <section class="docs-section docs-image-section" id="image-custom-size" data-docs-category="dynamic-image" hidden>
+                    <h2>Generate custom size image <a class="docs-section-permalink" href="#image-custom-size" aria-label="Link to Generate custom size image">↗</a></h2>
+                    <pre><code>// https://dummyjson.com/image/WIDTHxHEIGHT
+fetch("https://dummyjson.com/image/200x100")
+  .then(response => response.blob())
+  .then(blob => console.log("Fetched image blob:", blob));</code></pre>
+                    <h3 class="docs-output-heading">Output:</h3>
+                    <img class="docs-image-output" src="https://dummyjson.com/image/200x100" width="200" height="100" alt="200 by 100 placeholder image" loading="eager" decoding="async">
+                </section>
+
+                <section class="docs-section docs-image-section" id="image-custom-text" data-docs-category="dynamic-image" hidden>
+                    <h2>Generate image with custom text <a class="docs-section-permalink" href="#image-custom-text" aria-label="Link to Generate image with custom text">↗</a></h2>
+                    <pre><code>// Add display text with the text query parameter
+fetch("https://dummyjson.com/image/400x200/008080/ffffff?text=Hello+Peter")
+  .then(response => response.blob())
+  .then(blob => console.log("Fetched image blob:", blob));</code></pre>
+                    <h3 class="docs-output-heading">Output:</h3>
+                    <img class="docs-image-output" src="https://dummyjson.com/image/400x200/008080/ffffff?text=Hello+Peter" width="400" height="200" alt="Placeholder image displaying Hello Peter" loading="eager" decoding="async">
+                </section>
+
+                <section class="docs-section docs-image-section" id="image-custom-colors" data-docs-category="dynamic-image" hidden>
+                    <h2>Custom background and text color <a class="docs-section-permalink" href="#image-custom-colors" aria-label="Link to Custom background and text color">↗</a></h2>
+                    <pre><code>// Set the background and text colors in the URL path
+fetch("https://dummyjson.com/image/400x200/282828/ffffff?text=Custom+colors")
+  .then(response => response.blob())
+  .then(blob => console.log("Fetched image blob:", blob));</code></pre>
+                    <h3 class="docs-output-heading">Output:</h3>
+                    <img class="docs-image-output" src="https://dummyjson.com/image/400x200/282828/ffffff?text=Custom+colors" width="400" height="200" alt="Dark placeholder image with white Custom colors text" loading="eager" decoding="async">
+                </section>
+
+                <section class="docs-section docs-image-section" id="image-format" data-docs-category="dynamic-image" hidden>
+                    <h2>Generate image with different formats <a class="docs-section-permalink" href="#image-format" aria-label="Link to Generate image with different formats">↗</a></h2>
+                    <p>Choose <code>png</code>, <code>jpg</code>, or <code>webp</code> with the <code>type</code> query parameter.</p>
+                    <pre><code>fetch("https://dummyjson.com/image/400x200?type=webp&amp;text=I+am+a+WebP+image")
+  .then(response => response.blob())
+  .then(blob => console.log("Fetched image blob:", blob));</code></pre>
+                    <h3 class="docs-output-heading">Output:</h3>
+                    <img class="docs-image-output" src="https://dummyjson.com/image/400x200?type=webp&amp;text=I+am+a+WebP+image" width="400" height="200" alt="WebP placeholder image" loading="eager" decoding="async">
+                </section>
+
+                <section class="docs-section docs-image-section" id="image-font-family" data-docs-category="dynamic-image" hidden>
+                    <h2>Generate image with custom font family <a class="docs-section-permalink" href="#image-font-family" aria-label="Link to Generate image with custom font family">↗</a></h2>
+                    <div class="docs-callout">
+                        <span>Supported fonts: bitter, cairo, comfortaa, cookie, dosis, gotham, lobster, marhey, pacifico, poppins, quicksand, qwigley, satisfy, ubuntu.</span>
+                    </div>
+                    <pre><code>fetch("https://dummyjson.com/image/400x200/282828?fontFamily=pacifico&amp;text=I+am+a+pacifico+font")
+  .then(response => response.blob())
+  .then(blob => console.log("Fetched image blob:", blob));</code></pre>
+                    <h3 class="docs-output-heading">Output:</h3>
+                    <img class="docs-image-output" src="https://dummyjson.com/image/400x200/282828?fontFamily=pacifico&amp;text=I+am+a+pacifico+font" width="400" height="200" alt="Placeholder image using the Pacifico font" loading="eager" decoding="async">
+                </section>
+
+                <section class="docs-section docs-image-section" id="image-font-size" data-docs-category="dynamic-image" hidden>
+                    <h2>Generate image with custom font size <a class="docs-section-permalink" href="#image-font-size" aria-label="Link to Generate image with custom font size">↗</a></h2>
+                    <pre><code>fetch("https://dummyjson.com/image/400x200/008080/ffffff?text=Hello+Peter!&amp;fontSize=16")
+  .then(response => response.blob())
+  .then(blob => console.log("Fetched image blob:", blob));</code></pre>
+                    <h3 class="docs-output-heading">Output:</h3>
+                    <img class="docs-image-output" src="https://dummyjson.com/image/400x200/008080/ffffff?text=Hello+Peter!&amp;fontSize=16" width="400" height="200" alt="Placeholder image with 16 pixel text" loading="eager" decoding="async">
+                </section>
+
+                <section class="docs-section docs-image-section" id="image-identicon" data-docs-category="dynamic-image" hidden>
+                    <h2>Generate identicon <a class="docs-section-permalink" href="#image-identicon" aria-label="Link to Generate identicon">↗</a></h2>
+                    <pre><code>// PNG is the default output format
+fetch("https://dummyjson.com/icon/abc123/150")
+  .then(response => response.blob())
+  .then(blob => console.log("Fetched identicon blob:", blob));</code></pre>
+                    <h3 class="docs-output-heading">Output:</h3>
+                    <img class="docs-image-output docs-image-output--identicon" src="https://dummyjson.com/icon/abc123/150" width="150" height="150" alt="Generated identicon for abc123" loading="eager" decoding="async">
+                </section>
+
+                <section class="docs-section" id="auth-login" data-docs-category="auth" hidden>
                     <h2>Login</h2>
                     <p>Send credentials to receive an authentication response.</p>
                     <pre><code>fetch("https://dummyjson.com/auth/login", {
@@ -207,7 +295,7 @@
 });</code></pre>
                 </section>
 
-                <section class="docs-section" id="auth-user">
+                <section class="docs-section" id="auth-user" data-docs-category="auth" hidden>
                     <h2>Current User</h2>
                     <p>Use the token returned from login to request the current user.</p>
                     <pre><code>fetch("https://dummyjson.com/auth/me", {
@@ -215,13 +303,13 @@
 });</code></pre>
                 </section>
 
-                <section class="docs-section" id="products">
+                <section class="docs-section" id="products" data-docs-category="products" hidden>
                     <h2>All Products</h2>
                     <p>Fetch the products collection.</p>
                     <pre><code>fetch("https://dummyjson.com/products");</code></pre>
                 </section>
 
-                <section class="docs-section" id="single-product">
+                <section class="docs-section" id="single-product" data-docs-category="products" hidden>
                     <h2>Single Product</h2>
                     <p>Replace 1 with the product ID you want to retrieve.</p>
                     <pre><code>fetch("https://dummyjson.com/products/1");</code></pre>

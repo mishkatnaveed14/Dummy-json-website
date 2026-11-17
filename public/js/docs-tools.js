@@ -1,4 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const categoryGroups = Array.from(document.querySelectorAll(".docs-group[data-docs-category]"));
+  const categorySections = Array.from(document.querySelectorAll(".docs-content > .docs-section[data-docs-category]"));
+  const overviewTitle = document.querySelector(".docs-overview h1");
+  const overviewDescription = document.querySelector(".docs-overview p");
+  const dynamicImageCallout = document.getElementById("dynamic-image-callout");
+  const categoryCopy = {
+    intro: ["Intro — Docs", "Quick-start examples for testing requests, query options, and API responses."],
+    tools: ["Developer Tools — Docs", "DataDino developer tools help you test and prototype: generate TOTP codes, create custom JSON endpoints, and inspect webhook requests."],
+    "dynamic-image": ["Image — Docs", "The image endpoint provides customizable placeholder images by size, with options for background color, text color, and display text. Use them in websites and wireframes."],
+    auth: ["Authentication — Docs", "Explore login and authenticated user endpoints."],
+    products: ["Products — Docs", "Browse the products collection and retrieve individual products."]
+  };
+
+  const activateCategory = (activeGroup) => {
+    const category = activeGroup.dataset.docsCategory;
+    categoryGroups.forEach((group) => {
+      group.open = group === activeGroup;
+    });
+    categorySections.forEach((section) => {
+      section.hidden = section.dataset.docsCategory !== category;
+    });
+    dynamicImageCallout.hidden = category !== "dynamic-image";
+    overviewTitle.textContent = categoryCopy[category][0];
+    overviewDescription.textContent = categoryCopy[category][1];
+    document.title = `${categoryCopy[category][0]} | DataDino`;
+  };
+
+  categoryGroups.forEach((group) => {
+    group.addEventListener("toggle", () => {
+      if (group.open) {
+        activateCategory(group);
+      }
+    });
+  });
+  activateCategory(categoryGroups.find((group) => group.open) || categoryGroups[0]);
+
   const totpButtons = document.querySelectorAll("[data-totp-method]");
 
   totpButtons.forEach((button) => {

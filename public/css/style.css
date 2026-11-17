@@ -1414,3 +1414,195 @@ body {
         transition-duration: 0.01ms !important;
     }
 }
+/* demo css */
+.try-demo,
+.try-demo * {
+    box-sizing: border-box;
+}
+
+.try-demo {
+    position: relative;
+    display: grid;
+    min-height: 720px;
+    place-items: center;
+    overflow: hidden;
+    padding: 72px 24px 84px;
+    background:
+        radial-gradient(ellipse at 98% 4%, rgba(255, 190, 185, 0.32), transparent 38%),
+        radial-gradient(ellipse at 2% 95%, rgba(255, 220, 216, 0.22), transparent 35%),
+        #fff;
+    color: #171717;
+    text-align: center;
+}
+
+.try-demo__content {
+    width: min(100%, 900px);
+    animation: try-demo-enter 650ms ease both;
+}
+
+.try-demo__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0;
+    font-size: clamp(2.4rem, 7vw, 3.8rem);
+    font-weight: 750;
+    letter-spacing: -0.055em;
+    line-height: 1.1;
+}
+
+.try-demo__title span {
+    color: #ff8589;
+    font-size: 0.85em;
+}
+
+.try-demo__intro {
+    margin: 12px 0 24px;
+    color: #343434;
+    font-size: clamp(1rem, 2.7vw, 1.35rem);
+    line-height: 1.5;
+}
+
+.try-demo__request {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 9px 12px;
+    border-radius: 12px;
+    background: #f0eeee;
+    color: #666;
+    font: 0.95rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.try-demo__request select {
+    max-width: 100%;
+    padding: 5px 25px 5px 9px;
+    border: 0;
+    border-radius: 7px;
+    outline-offset: 3px;
+    background: #ffe2e0;
+    color: #e85f68;
+    font: inherit;
+    cursor: pointer;
+}
+
+.try-demo__request select:focus-visible,
+.try-demo__button:focus-visible {
+    outline: 3px solid #625cf0;
+    outline-offset: 4px;
+}
+
+.try-demo__response {
+    overflow: hidden;
+    width: 100%;
+    border: 2px solid #171717;
+    border-radius: 12px;
+    background: #243036;
+    box-shadow: 4px 5px 0 #171717;
+    text-align: left;
+}
+
+.try-demo__toolbar {
+    display: flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    color: #d7dce0;
+    font-size: 0.82rem;
+}
+
+#demo-status {
+    color: #a9d8bd;
+    text-align: right;
+}
+
+.try-demo__response pre {
+    max-height: 430px;
+    overflow: auto;
+    margin: 0;
+    padding: 18px 22px;
+    color: #a8d7b6;
+    font: 0.9rem/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    tab-size: 2;
+    white-space: pre;
+}
+
+.try-demo__button {
+    display: inline-flex;
+    min-width: 160px;
+    min-height: 56px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 12px 24px;
+    border: 2px solid #171717;
+    border-radius: 12px;
+    background: #ffbeb9;
+    box-shadow: 4px 5px 0 #171717;
+    color: #171717;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.try-demo__button:hover {
+    transform: translate(2px, 2px);
+    background: #ffa9a7;
+    box-shadow: 2px 3px 0 #171717;
+}
+
+@keyframes try-demo-enter {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .try-demo {
+        min-height: 640px;
+        padding: 64px 18px 72px;
+    }
+
+    .try-demo__title {
+        gap: 8px;
+        font-size: clamp(2.1rem, 10vw, 3rem);
+    }
+
+    .try-demo__request {
+        font-size: 0.78rem;
+    }
+
+    .try-demo__response pre {
+        max-height: 360px;
+        padding: 14px;
+        font-size: 0.78rem;
+    }
+
+    .try-demo__toolbar {
+        font-size: 0.75rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .try-demo *,
+    .try-demo *::before,
+    .try-demo *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

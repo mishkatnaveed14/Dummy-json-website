@@ -2479,13 +2479,13 @@ body {
 
     .docs-layout .docs-sidebar {
         position: fixed;
-        top: 168px;
+        top: 78px;
         right: 0;
         left: 0;
         z-index: 49;
         display: none;
         width: 100%;
-        max-height: calc(100vh - 168px);
+        max-height: calc(100vh - 78px);
         overflow-y: auto;
         border-radius: 0 0 12px 12px;
         box-shadow: 0 16px 30px rgba(32, 38, 64, 0.16);
@@ -2575,46 +2575,52 @@ body {
     }
 
     .docs-body .mobile-menu__panel {
-        position: fixed;
-        top: 112px;
+        position: absolute;
+        top: calc(100% + 13px);
         right: 0;
-        left: 0;
+        left: auto;
         z-index: 52;
         display: none;
-        width: 100%;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
-        justify-content: stretch;
+        width: min(250px, calc(100vw - 28px));
+        grid-template-columns: 1fr;
         gap: 4px;
-        padding: 8px 12px;
-        border: 0;
-        border-top: 1px solid #e8e8e8;
-        border-radius: 0;
-        background: #fff;
-        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
-        opacity: 1;
-        pointer-events: auto;
-        transform: none;
-        visibility: visible;
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
+        padding: 9px;
+        border: 1px solid rgba(23, 23, 23, 0.12);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 18px 38px rgba(20, 24, 35, 0.18);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px) scale(0.98);
+        transform-origin: top right;
+        transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+        visibility: hidden;
+        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: blur(18px);
     }
 
     .docs-body .mobile-menu[open] .mobile-menu__panel {
         display: grid;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+        visibility: visible;
     }
 
     .docs-body .mobile-menu__link {
-        padding: 12px 6px;
+        display: block;
+        padding: 13px 12px;
+        border-radius: 10px;
         color: #333;
-        text-align: center;
+        text-align: left;
     }
 
     .docs-body .mobile-menu__github {
         display: inline-flex;
-        min-height: 42px;
-        justify-content: center;
-        margin: 0;
-        padding: 0 6px;
+        min-height: 44px;
+        justify-content: flex-start;
+        margin: 4px 0 0;
+        padding: 0 12px;
         border-color: #171717;
         border-radius: 10px;
         background: #fff;

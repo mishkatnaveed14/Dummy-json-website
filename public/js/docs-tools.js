@@ -49,6 +49,17 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileMenu.open = false;
       }
     });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mobileMenu.open) {
+        mobileMenu.open = false;
+        mobileMenu.querySelector(".mobile-menu__toggle").focus();
+      }
+    });
+    docsSidebar.addEventListener("click", (event) => {
+      if (event.target.closest("a[href]")) {
+        mobileMenu.open = false;
+      }
+    });
   }
 
   const totpButtons = document.querySelectorAll("[data-totp-method]");

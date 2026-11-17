@@ -1,9 +1,9 @@
 :root {
     color-scheme: dark;
-    --nav-bg: rgba(15, 17, 20, 0.78);
-    --nav-border: rgba(255, 255, 255, 0.1);
-    --nav-text: #f5f6f7;
-    --nav-muted: #a4a8ae;
+    --nav-bg: #fff;
+    --nav-border: rgba(23, 23, 23, 0.12);
+    --nav-text: #171717;
+    --nav-muted: #555;
     --nav-green: #a3e635;
     --nav-blue: #7dd3fc;
     --nav-violet: #c4b5fd;
@@ -18,8 +18,9 @@
 }
 
 .site-header {
-    position: relative;
-    z-index: 20;
+    position: sticky;
+    top: 0;
+    z-index: 50;
     width: 100%;
     padding: 18px 24px;
     color: var(--nav-text);
@@ -37,9 +38,18 @@
     border: 1px solid var(--nav-border);
     border-radius: 18px;
     background: var(--nav-bg);
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
     -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
+    transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.site-header--scrolled .navbar {
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
 }
 
 .brand {
@@ -104,6 +114,10 @@
     transition: color 180ms ease, background-color 180ms ease;
 }
 
+.mobile-menu__link {
+    color: #d1d5db;
+}
+
 .nav-link {
     padding: 10px 15px;
 }
@@ -157,9 +171,9 @@
     align-items: center;
     justify-content: center;
     gap: 9px;
-    border: 1px solid rgba(196, 181, 253, 0.32);
-    background: rgba(196, 181, 253, 0.06);
-    color: #e6ddff;
+    border: 1px solid rgba(23, 23, 23, 0.16);
+    background: #fff;
+    color: #171717;
     font-size: 13px;
     font-weight: 650;
     text-decoration: none;
@@ -253,9 +267,9 @@
         align-items: center;
         justify-content: center;
         gap: 5px;
-        border: 1px solid rgba(255, 255, 255, 0.11);
+        border: 1px solid rgba(23, 23, 23, 0.12);
         border-radius: 12px;
-        background: rgba(255, 255, 255, 0.045);
+        background: rgba(23, 23, 23, 0.035);
         cursor: pointer;
         list-style: none;
         transition: border-color 180ms ease, background-color 180ms ease;
@@ -275,7 +289,7 @@
         width: 17px;
         height: 1.5px;
         border-radius: 2px;
-        background: #e8eaed;
+        background: #171717;
         transition: transform 180ms ease, opacity 180ms ease;
     }
 
@@ -2537,7 +2551,7 @@ body {
 }
 
 .tools-main {
-    width: min(1120px, 100%);
+    width: min(1110px, 100%);
     margin: 0 auto;
     padding: 48px 24px 88px;
 }
@@ -2553,7 +2567,7 @@ body {
     justify-content: center;
     gap: 14px;
     margin: 0;
-    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-size: clamp(2.6rem, 6vw, 4.5rem);
     font-weight: 780;
     letter-spacing: -0.055em;
     line-height: 1.08;
@@ -2586,7 +2600,7 @@ body {
     min-height: 320px;
     flex-direction: column;
     align-items: flex-start;
-    padding: 30px 32px;
+    padding: 32px;
     border: 2px solid #171717;
     border-radius: 24px;
     background: #fff;
@@ -2618,9 +2632,9 @@ body {
 
 .tool-card__icon {
     display: grid;
-    width: 70px;
-    height: 70px;
-    flex: 0 0 70px;
+    width: 66px;
+    height: 66px;
+    flex: 0 0 66px;
     place-items: center;
     border: 2px solid #171717;
     border-radius: 21px;
@@ -2629,8 +2643,8 @@ body {
 }
 
 .tool-card__icon svg {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
 }
 
 .tool-card__content {
@@ -2641,7 +2655,7 @@ body {
 .tool-card__title {
     display: block;
     margin-bottom: 16px;
-    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
     font-weight: 720;
     letter-spacing: -0.025em;
     line-height: 1.2;
@@ -2651,8 +2665,8 @@ body {
     display: block;
     max-width: 42ch;
     color: #55545f;
-    font-size: 1.05rem;
-    line-height: 1.65;
+    font-size: 1.125rem;
+    line-height: 1.55;
 }
 
 .tool-card__arrow {

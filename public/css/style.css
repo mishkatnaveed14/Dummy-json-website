@@ -2479,13 +2479,13 @@ body {
 
     .docs-layout .docs-sidebar {
         position: fixed;
-        top: 140px;
+        top: 168px;
         right: 0;
         left: 0;
         z-index: 49;
         display: none;
         width: 100%;
-        max-height: calc(100vh - 140px);
+        max-height: calc(100vh - 168px);
         overflow-y: auto;
         border-radius: 0 0 12px 12px;
         box-shadow: 0 16px 30px rgba(32, 38, 64, 0.16);
@@ -2509,9 +2509,7 @@ body {
 
     .docs-body .navbar {
         display: grid;
-        grid-template-areas:
-            "brand menu"
-            "nav github";
+        grid-template-areas: "brand menu";
         grid-template-columns: minmax(0, 1fr) auto;
         gap: 0 8px;
         width: 100%;
@@ -2531,38 +2529,105 @@ body {
     }
 
     .docs-body .mobile-menu {
+        position: relative;
         display: block;
         grid-area: menu;
         margin: 0;
     }
 
-    .docs-body .mobile-menu__panel {
+    .docs-body .mobile-menu__toggle {
+        display: flex;
+        width: 42px;
+        height: 42px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        border: 1px solid rgba(23, 23, 23, 0.16);
+        border-radius: 12px;
+        background: #fff;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .docs-body .mobile-menu__toggle::-webkit-details-marker {
         display: none;
     }
 
-    .docs-body .desktop-nav {
-        display: flex;
-        grid-area: nav;
-        justify-content: space-around;
-        gap: 0;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        background: transparent;
+    .docs-body .mobile-menu__toggle > span:not(.visually-hidden) {
+        width: 17px;
+        height: 1.5px;
+        border-radius: 2px;
+        background: #171717;
+        transition: transform 180ms ease, opacity 180ms ease;
     }
 
-    .docs-body .nav-link {
-        padding: 12px 8px;
+    .docs-body .mobile-menu[open] .mobile-menu__toggle > span:first-child {
+        transform: translateY(6.5px) rotate(45deg);
+    }
+
+    .docs-body .mobile-menu[open] .mobile-menu__toggle > span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .docs-body .mobile-menu[open] .mobile-menu__toggle > span:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    .docs-body .mobile-menu__panel {
+        position: fixed;
+        top: 112px;
+        right: 0;
+        left: 0;
+        z-index: 52;
+        display: none;
+        width: 100%;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+        justify-content: stretch;
+        gap: 4px;
+        padding: 8px 12px;
+        border: 0;
+        border-top: 1px solid #e8e8e8;
+        border-radius: 0;
+        background: #fff;
+        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+        visibility: visible;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    .docs-body .mobile-menu[open] .mobile-menu__panel {
+        display: grid;
+    }
+
+    .docs-body .mobile-menu__link {
+        padding: 12px 6px;
         color: #333;
-        font-size: 15px;
+        text-align: center;
+    }
+
+    .docs-body .mobile-menu__github {
+        display: inline-flex;
+        min-height: 42px;
+        justify-content: center;
+        margin: 0;
+        padding: 0 6px;
+        border-color: #171717;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 2px 3px 0 #171717;
+        color: #171717;
+    }
+
+    .docs-body .desktop-nav {
+        display: none;
     }
 
     .docs-body .navbar > .github-button {
-        display: inline-flex;
-        grid-area: github;
-        min-height: 44px;
-        padding: 0 12px;
-        border-radius: 10px;
+        display: none;
     }
 }
 

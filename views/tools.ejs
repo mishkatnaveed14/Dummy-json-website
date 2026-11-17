@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Explore DataDino developer tools for two-factor codes, custom JSON responses, and webhook testing.">
+    <title>Developer Tools | DataDino</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="tools-page">
+    <%- include('partials/header') %>
+
+    <main class="tools-main">
+        <header class="tools-hero">
+            <h1 class="tools-hero__title">
+                <svg viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="m16 2 4.1 8.3 9.2 1.3-6.65 6.48 1.57 9.16L16 22.9l-8.22 4.34 1.57-9.16L2.7 11.6l9.2-1.3L16 2Z" fill="#c4b5fd" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+                <span>Developer Tools</span>
+            </h1>
+            <p>Handy utilities for development, testing, and prototyping.</p>
+        </header>
+
+        <section class="tools-grid" aria-label="Developer tools">
+            <a class="tool-card tool-card--totp" href="/docs#tools-totp" aria-labelledby="tool-totp-title" aria-describedby="tool-totp-description">
+                <span class="tool-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <rect x="7" y="14" width="18" height="14" rx="3" stroke="currentColor" stroke-width="2"/>
+                        <path d="M11 14V9a5 5 0 0 1 10 0v5m-5 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <span class="tool-card__content">
+                    <span class="tool-card__title" id="tool-totp-title">2FA TOTP Generator</span>
+                    <span class="tool-card__description" id="tool-totp-description">Generate real-time verification codes from your authenticator secret key. Works with Google Authenticator, Authy, and other TOTP apps.</span>
+                </span>
+                <span class="tool-card__arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="tool-card tool-card--response" href="/docs#tools-custom-response" aria-labelledby="tool-response-title" aria-describedby="tool-response-description">
+                <span class="tool-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <path d="m11 9-7 7 7 7m10-14 7 7-7 7m-3-17-4 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="tool-card__content">
+                    <span class="tool-card__title" id="tool-response-title">Custom Response</span>
+                    <span class="tool-card__description" id="tool-response-description">Spin up a mock REST API endpoint with any JSON body you define. Perfect for prototyping frontends without a backend.</span>
+                </span>
+                <span class="tool-card__arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="tool-card tool-card--webhook" href="/docs#tools-webhook" aria-labelledby="tool-webhook-title" aria-describedby="tool-webhook-description">
+                <span class="tool-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <rect x="7" y="7" width="18" height="22" rx="2" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 7V4h8v3m-9 7h10m-10 5h10m-10 5h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="tool-card__content">
+                    <span class="tool-card__title" id="tool-webhook-title">Webhook</span>
+                    <span class="tool-card__description" id="tool-webhook-description">Create temporary webhook endpoints to inspect incoming HTTP requests. Ideal for testing callbacks and debugging integrations.</span>
+                </span>
+                <span class="tool-card__arrow" aria-hidden="true">↗</span>
+            </a>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>

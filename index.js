@@ -21,7 +21,7 @@ app.get("/docs", (req, res) => {
 });
 
 app.get("/tools", (req, res) => {
-  res.redirect("/docs#tools-totp");
+  res.render("tools");
 });
 
 app.post("/api/custom-responses", (req, res) => {

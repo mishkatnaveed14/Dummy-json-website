@@ -35,7 +35,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-  activateCategory(categoryGroups.find((group) => group.open) || categoryGroups[0]);
+  const hashSection = window.location.hash
+    ? document.getElementById(window.location.hash.slice(1))
+    : null;
+  const hashCategory = hashSection && hashSection.dataset.docsCategory;
+  const initialGroup = categoryGroups.find((group) => group.dataset.docsCategory === hashCategory)
+    || categoryGroups.find((group) => group.open)
+    || categoryGroups[0];
+
+  activateCategory(initialGroup);
+  if (hashSection && hashCategory) {
+    window.requestAnimationFrame(() => {
+      hashSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
 
   if (mobileMenu && docsSidebar) {
     const syncSidebarVisibility = () => {

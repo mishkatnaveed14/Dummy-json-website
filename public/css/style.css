@@ -223,7 +223,7 @@
     outline-offset: 4px;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 1024px) {
     .site-header {
         padding: 14px 16px;
     }
@@ -1924,40 +1924,6 @@ body {
     color: #171717;
 }
 
-.docs-body .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    padding: 10px 24px;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(16px);
-}
-
-.docs-body .navbar {
-    border-color: rgba(23, 23, 23, 0.12);
-    background: rgba(255, 255, 255, 0.94);
-}
-
-.docs-body .brand {
-    color: #171717;
-}
-
-.docs-body .nav-link {
-    color: #555;
-}
-
-.docs-body .nav-link:hover,
-.docs-body .nav-link:focus-visible {
-    color: #171717;
-}
-
-.docs-body .github-button {
-    border-color: #171717;
-    background: #fff;
-    box-shadow: 3px 4px 0 #171717;
-    color: #171717;
-}
-
 .docs-layout,
 .docs-layout * {
     box-sizing: border-box;
@@ -2134,10 +2100,6 @@ body {
 }
 
 @media (max-width: 600px) {
-    .docs-body .site-header {
-        padding: 10px 14px;
-    }
-
     .docs-layout {
         gap: 18px;
         padding: 0 0 48px;
@@ -2487,14 +2449,14 @@ body {
 
     .docs-layout .docs-sidebar {
         position: fixed;
-        top: 78px;
+        top: 90px;
         right: 0;
         left: 0;
         z-index: 49;
         display: none;
         width: 100%;
-        max-height: calc(100vh - 78px);
-        max-height: calc(100dvh - 78px);
+        max-height: calc(100vh - 90px);
+        max-height: calc(100dvh - 90px);
         overflow-y: auto;
         overscroll-behavior: contain;
         -webkit-overflow-scrolling: touch;
@@ -2510,141 +2472,6 @@ body {
         grid-column: 1;
         grid-row: 2;
         padding: 24px 20px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .docs-body .site-header {
-        padding: 10px 0 0;
-    }
-
-    .docs-body .navbar {
-        display: grid;
-        grid-template-areas: "brand menu";
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 0 8px;
-        width: 100%;
-        padding: 8px 14px;
-        border-right: 0;
-        border-left: 0;
-        border-radius: 0;
-        box-shadow: none;
-    }
-
-    .docs-body .brand {
-        grid-area: brand;
-    }
-
-    .docs-body .brand__name {
-        font-size: clamp(21px, 4vw, 28px);
-    }
-
-    .docs-body .mobile-menu {
-        position: relative;
-        display: block;
-        grid-area: menu;
-        margin: 0;
-    }
-
-    .docs-body .mobile-menu__toggle {
-        display: flex;
-        width: 42px;
-        height: 42px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        border: 1px solid rgba(23, 23, 23, 0.16);
-        border-radius: 12px;
-        background: #fff;
-        cursor: pointer;
-        list-style: none;
-    }
-
-    .docs-body .mobile-menu__toggle::-webkit-details-marker {
-        display: none;
-    }
-
-    .docs-body .mobile-menu__toggle > span:not(.visually-hidden) {
-        width: 17px;
-        height: 1.5px;
-        border-radius: 2px;
-        background: #171717;
-        transition: transform 180ms ease, opacity 180ms ease;
-    }
-
-    .docs-body .mobile-menu[open] .mobile-menu__toggle > span:first-child {
-        transform: translateY(6.5px) rotate(45deg);
-    }
-
-    .docs-body .mobile-menu[open] .mobile-menu__toggle > span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .docs-body .mobile-menu[open] .mobile-menu__toggle > span:nth-child(3) {
-        transform: translateY(-6.5px) rotate(-45deg);
-    }
-
-    .docs-body .mobile-menu__panel {
-        position: absolute;
-        top: calc(100% + 13px);
-        right: 0;
-        left: auto;
-        z-index: 52;
-        display: none;
-        width: min(250px, calc(100vw - 28px));
-        grid-template-columns: 1fr;
-        gap: 4px;
-        padding: 9px;
-        border: 1px solid rgba(23, 23, 23, 0.12);
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: 0 18px 38px rgba(20, 24, 35, 0.18);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(8px) scale(0.98);
-        transform-origin: top right;
-        transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
-        visibility: hidden;
-        -webkit-backdrop-filter: blur(18px);
-        backdrop-filter: blur(18px);
-    }
-
-    .docs-body .mobile-menu[open] .mobile-menu__panel {
-        display: grid;
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0) scale(1);
-        visibility: visible;
-    }
-
-    .docs-body .mobile-menu__link {
-        display: block;
-        padding: 13px 12px;
-        border-radius: 10px;
-        color: #333;
-        text-align: left;
-    }
-
-    .docs-body .mobile-menu__github {
-        display: inline-flex;
-        min-height: 44px;
-        justify-content: flex-start;
-        margin: 4px 0 0;
-        padding: 0 12px;
-        border-color: #171717;
-        border-radius: 10px;
-        background: #fff;
-        box-shadow: 2px 3px 0 #171717;
-        color: #171717;
-    }
-
-    .docs-body .desktop-nav {
-        display: none;
-    }
-
-    .docs-body .navbar > .github-button {
-        display: none;
     }
 }
 
